@@ -101,7 +101,7 @@ namespace AplicacionEscuela
             conexion.Close(); //la cierra
         }
 
-        public void Buscar() //REVISARRRRRRRRR
+        public void Buscar()
         {
             Sistema sis = new Sistema();
             MySqlConnection conexion = sis.getConexion(); //obtiene la cadena de conexion
@@ -110,8 +110,6 @@ namespace AplicacionEscuela
             conexion.Open(); //abre la conexion
             buscar.ExecuteNonQuery(); //ejecuta el comando en la base de datos
             conexion.Close(); //la cierra
-
         }
-
     }
 }

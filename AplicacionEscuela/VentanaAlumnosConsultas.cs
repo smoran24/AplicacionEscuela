@@ -13,6 +13,7 @@ namespace AplicacionEscuela
 {
     public partial class VentanaAlumnosConsultas : Form
     {
+        
         public VentanaAlumnosConsultas()
         {
             InitializeComponent();
@@ -156,6 +157,16 @@ namespace AplicacionEscuela
                 cmbTurno.Text = row.Cells[5].Value.ToString();
                 txtLegajo.Text = row.Cells[6].Value.ToString();
             }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtEmail.Text = "";
+            txtDNI.Text = "";
+            cmbTurno.Text = "";
+            txtLegajo.Text = "";
         }
     }
 }
