@@ -1,0 +1,25 @@
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.csproj.AssemblyReference.cache
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.Form1.resources
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.csproj.GenerateResource.cache
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\bin\Debug\AplicacionEscuela.exe.config
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\bin\Debug\AplicacionEscuela.exe
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\bin\Debug\AplicacionEscuela.pdb
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.Properties.Resources.resources
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.csproj.CoreCompileInputs.cache
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.exe
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.pdb
+C:\Users\sebia\source\repos\tps-lab2\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.VentanaAlumnosConsultas.resources
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\AplicacionEscuela.exe.config
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.exe
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.pdb
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.csprojResolveAssemblyReference.cache
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.Form1.resources
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.Properties.Resources.resources
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.VentanaAlumnosConsultas.resources
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.csproj.GenerateResource.Cache
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\AplicacionEscuela.exe
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\AplicacionEscuela.pdb
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\Google.Protobuf.dll
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\MySql.Data.dll
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\Google.Protobuf.xml
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\MySql.Data.xml
