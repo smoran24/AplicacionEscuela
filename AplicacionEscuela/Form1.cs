@@ -79,5 +79,17 @@ namespace AplicacionEscuela
             alu.Agregar();
           */
         }
+
+        private void consultasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            VentanaProfesoresConsultas form = new VentanaProfesoresConsultas();
+            form.Show();
+        }
+
+        private void consultasToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            VentanaMateriasConsultas form = new VentanaMateriasConsultas();
+            form.Show();
+        }
     }
 }

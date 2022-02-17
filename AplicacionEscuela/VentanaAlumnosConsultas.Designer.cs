@@ -114,21 +114,21 @@ namespace AplicacionEscuela
             // 
             this.txtNombre.Location = new System.Drawing.Point(62, 12);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(187, 20);
+            this.txtNombre.Size = new System.Drawing.Size(177, 20);
             this.txtNombre.TabIndex = 19;
             // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(62, 50);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(187, 20);
+            this.txtApellido.Size = new System.Drawing.Size(177, 20);
             this.txtApellido.TabIndex = 20;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(62, 87);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(187, 20);
+            this.txtEmail.Size = new System.Drawing.Size(121, 20);
             this.txtEmail.TabIndex = 21;
             // 
             // txtDNI

@@ -91,6 +91,18 @@
     <Compile Include="VentanaAlumnosConsultas.Designer.cs">
       <DependentUpon>VentanaAlumnosConsultas.cs</DependentUpon>
     </Compile>
+    <Compile Include="VentanaMateriasConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaMateriasConsultas.Designer.cs">
+      <DependentUpon>VentanaMateriasConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaProfesoresConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaProfesoresConsultas.Designer.cs">
+      <DependentUpon>VentanaProfesoresConsultas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +113,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaAlumnosConsultas.resx">
       <DependentUpon>VentanaAlumnosConsultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaMateriasConsultas.resx">
+      <DependentUpon>VentanaMateriasConsultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaProfesoresConsultas.resx">
+      <DependentUpon>VentanaProfesoresConsultas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

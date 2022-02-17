@@ -68,7 +68,7 @@ namespace AplicacionEscuela
             // consultasToolStripMenuItem
             // 
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.consultasToolStripMenuItem.Text = "Consultas";
             this.consultasToolStripMenuItem.Click += new System.EventHandler(this.consultasToolStripMenuItem_Click);
             // 
@@ -85,6 +85,7 @@ namespace AplicacionEscuela
             this.consultasToolStripMenuItem1.Name = "consultasToolStripMenuItem1";
             this.consultasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.consultasToolStripMenuItem1.Text = "Consultas";
+            this.consultasToolStripMenuItem1.Click += new System.EventHandler(this.consultasToolStripMenuItem1_Click);
             // 
             // materiasToolStripMenuItem
             // 
@@ -99,6 +100,7 @@ namespace AplicacionEscuela
             this.consultasToolStripMenuItem2.Name = "consultasToolStripMenuItem2";
             this.consultasToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.consultasToolStripMenuItem2.Text = "Consultas";
+            this.consultasToolStripMenuItem2.Click += new System.EventHandler(this.consultasToolStripMenuItem2_Click);
             // 
             // notasToolStripMenuItem
             // 
@@ -111,7 +113,7 @@ namespace AplicacionEscuela
             // consultasToolStripMenuItem3
             // 
             this.consultasToolStripMenuItem3.Name = "consultasToolStripMenuItem3";
-            this.consultasToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.consultasToolStripMenuItem3.Size = new System.Drawing.Size(126, 22);
             this.consultasToolStripMenuItem3.Text = "Consultas";
             // 
             // pictureBox1

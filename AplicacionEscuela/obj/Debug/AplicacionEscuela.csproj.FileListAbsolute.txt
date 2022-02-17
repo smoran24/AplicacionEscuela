@@ -23,3 +23,5 @@ D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\Google.Protobuf.
 D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\MySql.Data.dll
 D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\Google.Protobuf.xml
 D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\bin\Debug\MySql.Data.xml
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.VentanaProfesoresConsultas.resources
+D:\Tarea Facultad\AplicacionEscuela\AplicacionEscuela\obj\Debug\AplicacionEscuela.VentanaMateriasConsultas.resources

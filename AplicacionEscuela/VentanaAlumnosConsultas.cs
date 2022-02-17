@@ -18,6 +18,7 @@ namespace AplicacionEscuela
         {
             InitializeComponent();
             refrescarTabla(); //muestra la datagridview para poder ver la base de datos
+            btnAgregar.Enabled = false;
         }
 
         public void refrescarTabla()
@@ -68,6 +69,7 @@ namespace AplicacionEscuela
                     alu.Agregar(); //llamo al método de la clase para hacer un alta con esta instancia de la clase
                     MessageBox.Show("Registro añadido correctamente");
                     refrescarTabla();
+                    btnAgregar.Enabled = false;
                 }
                 else
                 { MessageBox.Show("Error: Debe ingresar valores numéricos para DNI o legajo"); }
@@ -167,6 +169,7 @@ namespace AplicacionEscuela
             txtDNI.Text = "";
             cmbTurno.Text = "";
             txtLegajo.Text = "";
+            btnAgregar.Enabled = true;
         }
     }
 }
