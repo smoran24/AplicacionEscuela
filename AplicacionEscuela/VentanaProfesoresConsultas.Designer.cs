@@ -81,6 +81,7 @@
             // txtDNI
             // 
             this.txtDNI.Location = new System.Drawing.Point(61, 87);
+            this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(121, 20);
             this.txtDNI.TabIndex = 23;
@@ -98,6 +99,7 @@
             // txtLegajo
             // 
             this.txtLegajo.Location = new System.Drawing.Point(61, 159);
+            this.txtLegajo.MaxLength = 5;
             this.txtLegajo.Name = "txtLegajo";
             this.txtLegajo.Size = new System.Drawing.Size(121, 20);
             this.txtLegajo.TabIndex = 28;
@@ -147,6 +149,7 @@
             this.dgvProfesores.ReadOnly = true;
             this.dgvProfesores.Size = new System.Drawing.Size(619, 272);
             this.dgvProfesores.TabIndex = 34;
+            this.dgvProfesores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfesores_CellClick);
             // 
             // btnAgregar
             // 
@@ -156,6 +159,7 @@
             this.btnAgregar.TabIndex = 35;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnBorrar
             // 
@@ -165,6 +169,7 @@
             this.btnBorrar.TabIndex = 36;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnModificar
             // 
@@ -174,6 +179,7 @@
             this.btnModificar.TabIndex = 37;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnNuevo
             // 
@@ -183,6 +189,7 @@
             this.btnNuevo.TabIndex = 38;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // cmbAnio
             // 
@@ -240,6 +247,7 @@
             this.Controls.Add(this.label1);
             this.Name = "VentanaProfesoresConsultas";
             this.Text = "Consultas Profesores";
+            this.Load += new System.EventHandler(this.VentanaProfesoresConsultas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfesores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

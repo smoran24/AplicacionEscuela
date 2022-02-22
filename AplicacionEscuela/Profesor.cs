@@ -10,7 +10,7 @@ namespace AplicacionEscuela
     class Profesor : Persona, ITransacciones //relación de tipo GENERALIZACIÓN con Persona e implementación de INTERFAZ con ITransacciones
     {
         private int anioIncorporacion;
-        private List<Materia> materias = new List<Materia>(); //relación de tipo AGREGACIÓN con Materia
+        private List<Materia> materias = new List<Materia>(); //relación de tipo AGREGACIÓN con Materia (cada profesor tiene varias materias)
         private int id;
 
         public Profesor(int id) //constructor usado cuando se necesite el método Borrar() para eliminar un registro solo por ID

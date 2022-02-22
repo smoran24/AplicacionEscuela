@@ -134,6 +134,7 @@ namespace AplicacionEscuela
             // txtDNI
             // 
             this.txtDNI.Location = new System.Drawing.Point(62, 126);
+            this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(121, 20);
             this.txtDNI.TabIndex = 22;
@@ -141,6 +142,7 @@ namespace AplicacionEscuela
             // txtLegajo
             // 
             this.txtLegajo.Location = new System.Drawing.Point(62, 164);
+            this.txtLegajo.MaxLength = 5;
             this.txtLegajo.Name = "txtLegajo";
             this.txtLegajo.Size = new System.Drawing.Size(121, 20);
             this.txtLegajo.TabIndex = 23;

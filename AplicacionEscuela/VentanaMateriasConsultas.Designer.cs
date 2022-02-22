@@ -37,6 +37,8 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtIdProfesor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaterias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,9 +70,10 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(12, 65);
+            this.txtDescripcion.MaxLength = 150;
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(224, 159);
+            this.txtDescripcion.Size = new System.Drawing.Size(224, 123);
             this.txtDescripcion.TabIndex = 23;
             // 
             // dgvMaterias
@@ -82,6 +85,7 @@
             this.dgvMaterias.ReadOnly = true;
             this.dgvMaterias.Size = new System.Drawing.Size(619, 272);
             this.dgvMaterias.TabIndex = 35;
+            this.dgvMaterias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaterias_CellClick);
             // 
             // btnNuevo
             // 
@@ -91,6 +95,7 @@
             this.btnNuevo.TabIndex = 39;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnAgregar
             // 
@@ -100,6 +105,7 @@
             this.btnAgregar.TabIndex = 40;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnBorrar
             // 
@@ -109,6 +115,7 @@
             this.btnBorrar.TabIndex = 41;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnModificar
             // 
@@ -118,12 +125,33 @@
             this.btnModificar.TabIndex = 42;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 209);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "ID profesor titular";
+            // 
+            // txtIdProfesor
+            // 
+            this.txtIdProfesor.Location = new System.Drawing.Point(105, 206);
+            this.txtIdProfesor.MaxLength = 2;
+            this.txtIdProfesor.Name = "txtIdProfesor";
+            this.txtIdProfesor.Size = new System.Drawing.Size(64, 20);
+            this.txtIdProfesor.TabIndex = 44;
+            this.txtIdProfesor.TextChanged += new System.EventHandler(this.txtIdProfesor_TextChanged);
             // 
             // VentanaMateriasConsultas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 330);
+            this.Controls.Add(this.txtIdProfesor);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnAgregar);
@@ -152,5 +180,7 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtIdProfesor;
     }
 }

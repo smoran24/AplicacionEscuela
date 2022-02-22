@@ -10,7 +10,7 @@ namespace AplicacionEscuela
     class Alumno : Persona, ITransacciones //relación de tipo GENERALIZACIÓN con Persona e implementación de INTERFAZ con ITransacciones
     {
         private string turno;
-        private List<Materia> materias = new List<Materia>(); //relación de tipo AGREGACIÓN con Materia
+        private List<Materia> materias = new List<Materia>(); //relación de tipo AGREGACIÓN con Materia (cada alumno tiene varias materias)
         private int id;
 
         public Alumno(int id) //constructor usado cuando se necesite el método Borrar() para eliminar un registro solo por ID
@@ -101,7 +101,7 @@ namespace AplicacionEscuela
             conexion.Close(); //la cierra
         }
 
-        public void Buscar()
+        public void Buscar() //NO SE SI LA IMPLELENTARÉ
         {
             Sistema sis = new Sistema();
             MySqlConnection conexion = sis.getConexion(); //obtiene la cadena de conexion
