@@ -22,10 +22,7 @@ namespace AplicacionEscuela
 
         public void refrescarTabla()
         {
-            Sistema sis = new Sistema();
-            MySqlConnection conexion = sis.getConexion(); //obtengo la cadena de conexion de Sistema.cs para conectarme a la base de datos
-            string comando = "SELECT * FROM cursos"; //sentencia SQL que selecciona todos los registros de la tabla indicada
-            MySqlDataAdapter da = new MySqlDataAdapter(comando, conexion); //crea el adaptador de datos con la info de conexion y la sentencia
+            MySqlDataAdapter da = GestorDB.RefrescarDB(3); //3 indica que se refrescará la tabla de materias
             DataSet ds = new DataSet(); //crea data set para llenar la datagrid
             da.Fill(ds, "cursos"); //llena con la tabla indicada el adaptador de datos
             dgvMaterias.DataSource = ds.Tables["cursos"].DefaultView; //llena la datagridview usando los datos de la tabla indicada
@@ -33,7 +30,7 @@ namespace AplicacionEscuela
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtNombre.Text) || String.IsNullOrEmpty(txtDescripcion.Text) || String.IsNullOrEmpty(txtIdProfesor.Text))
+            if (String.IsNullOrEmpty(txtNombre.Text) || String.IsNullOrEmpty(txtDescripcion.Text))
             {
                 MessageBox.Show("Error: Debe completar todos los campos para añadir un elemento");
             }
@@ -41,18 +38,11 @@ namespace AplicacionEscuela
             {
                 string p_nombre = txtNombre.Text;
                 string p_desc = txtDescripcion.Text;
-                int p_idProf;
-                if (int.TryParse(txtIdProfesor.Text, out p_idProf)) //valido si es int lo que ingresó el usuario en los textbox
-                {
-                    p_idProf = int.Parse(txtIdProfesor.Text); //convierto a int lo que este en el textbox
-                    Materia mat = new Materia(p_nombre, p_desc, p_idProf); //creo el objeto de la clase con los parametros dados
-                    mat.Agregar(); //llamo al método de la clase para hacer un alta con esta instancia de la clase
-                    MessageBox.Show("Registro añadido correctamente");
-                    refrescarTabla();
-                    btnAgregar.Enabled = false;
-                }
-                else
-                { MessageBox.Show("Error: Debe ingresar un valor numérico para el ID del profesor"); }
+                Materia mat = new Materia(p_nombre, p_desc); //creo el objeto de la clase con los parametros dados
+                mat.Agregar(); //llamo al método de la clase para hacer un alta con esta instancia de la clase
+                MessageBox.Show("Registro añadido correctamente");
+                refrescarTabla();
+                btnAgregar.Enabled = false;
             }
         }
 
@@ -92,8 +82,7 @@ namespace AplicacionEscuela
                     int IDfila = Convert.ToInt32(dgvMaterias[0, indiceElegido].Value); //obtiene y convierte a int lo que esté en la fila del datagrid
                     string p_nombre = txtNombre.Text;
                     string p_desc = txtDescripcion.Text;
-                    int p_idProf = int.Parse(txtIdProfesor.Text); //convierto a int lo que este en el textbox
-                    Materia mat = new Materia(IDfila, p_nombre, p_desc, p_idProf);
+                    Materia mat = new Materia(IDfila, p_nombre, p_desc);
                     mat.Modificar();
                     MessageBox.Show("Registro modificado con éxito");
                     refrescarTabla();
@@ -110,7 +99,6 @@ namespace AplicacionEscuela
                 //llena las textbox con los valores de cada columna a partir del indice 1 (el 0 es el ID)
                 txtNombre.Text = row.Cells[1].Value.ToString();
                 txtDescripcion.Text = row.Cells[2].Value.ToString();
-                txtIdProfesor.Text = row.Cells[3].Value.ToString();
             }
         }
 
@@ -118,7 +106,6 @@ namespace AplicacionEscuela
         {
             txtNombre.Text = "";
             txtDescripcion.Text = "";
-            txtIdProfesor.Text = "";
             btnAgregar.Enabled = true;
         }
 

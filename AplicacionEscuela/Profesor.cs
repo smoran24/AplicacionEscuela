@@ -13,6 +13,11 @@ namespace AplicacionEscuela
         private List<Materia> materias = new List<Materia>(); //relación de tipo AGREGACIÓN con Materia (cada profesor tiene varias materias)
         private int id;
 
+        public Profesor()
+        {
+
+        }
+
         public Profesor(int id) //constructor usado cuando se necesite el método Borrar() para eliminar un registro solo por ID
         {
             this.id = id;
@@ -58,49 +63,20 @@ namespace AplicacionEscuela
 
         public void Agregar()
         {
-            Sistema sis = new Sistema();
-            MySqlConnection conexion = sis.getConexion(); //obtiene la cadena de conexion
-            MySqlCommand agregar = new MySqlCommand("INSERT INTO profesores (nombre, apellido, dni, email, anioIncorporacion, legajo) VALUES (@nombre, @apellido, @dni, @email, @anioIncorporacion, @legajo)", conexion);
-            agregar.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = this.nombre;
-            agregar.Parameters.Add("@apellido", MySqlDbType.VarChar).Value = this.apellido;
-            agregar.Parameters.Add("@dni", MySqlDbType.Int32).Value = this.dni;
-            agregar.Parameters.Add("@email", MySqlDbType.VarChar).Value = this.email;
-            agregar.Parameters.Add("@anioIncorporacion", MySqlDbType.Int32).Value = this.anioIncorporacion;
-            agregar.Parameters.Add("@legajo", MySqlDbType.Int32).Value = this.legajo;
-            conexion.Open(); //abre la conexion
-            agregar.ExecuteNonQuery(); //ejecuta el comando "agregar" en la base de datos
-            conexion.Close(); //la cierra
+            GestorDB.InsertarProfesor(this.nombre, this.apellido, this.dni, this.email, this.anioIncorporacion, this.legajo);
         }
 
         public void Borrar()
         {
-            Sistema sis = new Sistema();
-            MySqlConnection conexion = sis.getConexion(); //obtiene la cadena de conexion
-            MySqlCommand borrar = new MySqlCommand("DELETE FROM profesores WHERE id = @id", conexion);
-            borrar.Parameters.Add("@id", MySqlDbType.Int32).Value = this.id;
-            conexion.Open(); //abre la conexion
-            borrar.ExecuteNonQuery(); //ejecuta el comando en la base de datos
-            conexion.Close(); //la cierra
+            GestorDB.EliminarProfesor(this.id);
         }
 
         public void Modificar()
         {
-            Sistema sis = new Sistema();
-            MySqlConnection conexion = sis.getConexion(); //obtiene la cadena de conexion
-            MySqlCommand modificar = new MySqlCommand("UPDATE profesores SET nombre = @nombre, apellido = @apellido, dni = @dni, email = @email, anioIncorporacion = @anioIncorporacion, legajo = @legajo WHERE id = @id", conexion);
-            modificar.Parameters.Add("@nombre", MySqlDbType.VarChar).Value = this.nombre;
-            modificar.Parameters.Add("@apellido", MySqlDbType.VarChar).Value = this.apellido;
-            modificar.Parameters.Add("@dni", MySqlDbType.Int32).Value = this.dni;
-            modificar.Parameters.Add("@email", MySqlDbType.VarChar).Value = this.email;
-            modificar.Parameters.Add("@anioIncorporacion", MySqlDbType.Int32).Value = this.anioIncorporacion;
-            modificar.Parameters.Add("@legajo", MySqlDbType.Int32).Value = this.legajo;
-            modificar.Parameters.Add("@id", MySqlDbType.Int32).Value = this.id;
-            conexion.Open(); //abre la conexion
-            modificar.ExecuteNonQuery(); //ejecuta el comando "agregar" en la base de datos
-            conexion.Close(); //la cierra
+            GestorDB.ActualizarProfesor(this.nombre, this.apellido, this.dni, this.email, this.anioIncorporacion, this.legajo, this.id);
         }
 
-        public void Buscar()
+        public void Buscar(int dni)
         {
             
         }

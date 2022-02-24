@@ -22,10 +22,7 @@ namespace AplicacionEscuela
 
         public void refrescarTabla()
         {
-            Sistema sis = new Sistema();
-            MySqlConnection conexion = sis.getConexion(); //obtengo la cadena de conexion de Sistema.cs para conectarme a la base de datos
-            string comando = "SELECT * FROM profesores"; //sentencia SQL que selecciona todos los registros de la tabla indicada
-            MySqlDataAdapter da = new MySqlDataAdapter(comando, conexion); //crea el adaptador de datos con la info de conexion y la sentencia
+            MySqlDataAdapter da = GestorDB.RefrescarDB(2); //2 indica que se refrescará la tabla de profes
             DataSet ds = new DataSet(); //crea data set para llenar la datagrid
             da.Fill(ds, "profesores"); //llena con la tabla indicada el adaptador de datos
             dgvProfesores.DataSource = ds.Tables["profesores"].DefaultView; //llena la datagridview usando los datos de la tabla indicada
@@ -52,10 +49,10 @@ namespace AplicacionEscuela
                 string p_nombre = txtNombre.Text;
                 string p_apellido = txtApellido.Text;
                 string p_email = txtEmail.Text;
+                int p_anio;
                 int p_legajo;
                 int p_dni;
-                int p_anio;
-                if (int.TryParse(txtDNI.Text, out p_dni) && int.TryParse(txtLegajo.Text, out p_legajo) && int.TryParse(cmbAnio.Text, out p_anio)) //valido si es int lo que ingresó el usuario en los textbox
+                try
                 {
                     p_legajo = int.Parse(txtLegajo.Text); //convierto a int lo que este en el textbox
                     p_dni = int.Parse(txtDNI.Text); //idem
@@ -66,8 +63,10 @@ namespace AplicacionEscuela
                     refrescarTabla();
                     btnAgregar.Enabled = false;
                 }
-                else
-                { MessageBox.Show("Error: Debe ingresar valores numéricos para DNI o legajo"); }
+                catch(Exception c)
+                {
+                    MessageBox.Show("Error: Debe ingresar valores numéricos para DNI o legajo");
+                }
             }
         }
 

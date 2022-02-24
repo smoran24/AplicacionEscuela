@@ -37,8 +37,6 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtIdProfesor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaterias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,31 +125,11 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 209);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
-            this.label3.TabIndex = 43;
-            this.label3.Text = "ID profesor titular";
-            // 
-            // txtIdProfesor
-            // 
-            this.txtIdProfesor.Location = new System.Drawing.Point(105, 206);
-            this.txtIdProfesor.MaxLength = 2;
-            this.txtIdProfesor.Name = "txtIdProfesor";
-            this.txtIdProfesor.Size = new System.Drawing.Size(64, 20);
-            this.txtIdProfesor.TabIndex = 44;
-            this.txtIdProfesor.TextChanged += new System.EventHandler(this.txtIdProfesor_TextChanged);
-            // 
             // VentanaMateriasConsultas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 330);
-            this.Controls.Add(this.txtIdProfesor);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnAgregar);
@@ -180,7 +158,5 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtIdProfesor;
     }
 }

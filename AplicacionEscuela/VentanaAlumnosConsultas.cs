@@ -17,16 +17,13 @@ namespace AplicacionEscuela
         public VentanaAlumnosConsultas()
         {
             InitializeComponent();
-            refrescarTabla(); //muestra la datagridview para poder ver la base de datos
+            refrescarTabla(); //al iniciar muestra la datagridview para poder ver la base de datos
             btnAgregar.Enabled = false;
         }
 
         public void refrescarTabla()
         {
-            Sistema sis = new Sistema();
-            MySqlConnection conexion = sis.getConexion(); //obtengo la cadena de conexion de Sistema.cs para conectarme a la base de datos
-            string comando = "SELECT * FROM alumnos"; //sentencia SQL que selecciona todos los registros de la tabla indicada
-            MySqlDataAdapter da = new MySqlDataAdapter(comando, conexion); //crea el adaptador de datos con la info de conexion y la sentencia
+            MySqlDataAdapter da = GestorDB.RefrescarDB(1); //1 indica que se refrescará la tabla de alumnos
             DataSet ds = new DataSet(); //crea data set para llenar la datagrid
             da.Fill(ds, "alumnos"); //llena con la tabla indicada el adaptador de datos
             dgvAlumnos.DataSource = ds.Tables["alumnos"].DefaultView; //llena la datagridview usando los datos de la tabla indicada
@@ -60,10 +57,10 @@ namespace AplicacionEscuela
                 string p_email = txtEmail.Text;
                 string p_turno = cmbTurno.Text;
                 int p_legajo;
-                int p_dni; 
-                if (int.TryParse(txtDNI.Text, out p_dni) && int.TryParse(txtLegajo.Text, out p_legajo)) //valido si es int lo que ingresó el usuario en los textbox de legajo y dni
+                int p_dni;
+                try
                 {
-                    p_legajo = int.Parse(txtLegajo.Text); //convierto a int lo que este en el textbox
+                    p_legajo = int.Parse(txtLegajo.Text); //convierto a int lo que este en el textbox. Si no funciona, tirará excepción
                     p_dni = int.Parse(txtDNI.Text); //idem
                     Alumno alu = new Alumno(p_turno, p_legajo, p_nombre, p_apellido, p_email, p_dni); //creo el objeto de la clase con los parametros dados
                     alu.Agregar(); //llamo al método de la clase para hacer un alta con esta instancia de la clase
@@ -71,8 +68,10 @@ namespace AplicacionEscuela
                     refrescarTabla();
                     btnAgregar.Enabled = false;
                 }
-                else
-                { MessageBox.Show("Error: Debe ingresar valores numéricos para DNI o legajo"); }
+                catch(Exception c)
+                {
+                    MessageBox.Show("Error: Debe ingresar valores numéricos para DNI o legajo");
+                }
             }
         }
 
@@ -124,7 +123,8 @@ namespace AplicacionEscuela
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
-        {/*
+        {
+            /*
             if (String.IsNullOrEmpty(txtDNI.Text))
             {
                 MessageBox.Show("Error: Debe ingresar el DNI para realizar la búsqueda");
@@ -132,16 +132,17 @@ namespace AplicacionEscuela
             else
             {
                 int p_dni;
-                if (int.TryParse(txtDNI.Text, out p_dni)) //valido si es int lo que ingresó el usuario en el textbox
+                try
                 {
                     p_dni = int.Parse(txtDNI.Text); //convierto a int
                     Alumno alu = new Alumno();
-                    alu.setDni(p_dni);
-                    alu.Buscar();
-                    
+                    alu.Buscar(dni);
+                    //de alguna forma mostrar lo que se buscó...
+
+                }catch(Exception c)
+                {
+                    MessageBox.Show("Error: Debe ingresar un valor numérico para DNI");
                 }
-                else
-                { MessageBox.Show("Error: Debe ingresar un valor numérico para DNI"); }
             }*/
         }
 
@@ -170,6 +171,11 @@ namespace AplicacionEscuela
             cmbTurno.Text = "";
             txtLegajo.Text = "";
             btnAgregar.Enabled = true;
+        }
+
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
