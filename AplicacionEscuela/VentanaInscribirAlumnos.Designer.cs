@@ -31,14 +31,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtIDalumno = new System.Windows.Forms.TextBox();
-            this.txtIDmateria = new System.Windows.Forms.TextBox();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnBorrar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnVerMaterias = new System.Windows.Forms.Button();
+            this.btnBorrar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.txtIDmateria = new System.Windows.Forms.TextBox();
+            this.txtIDalumno = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +46,9 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(255, 12);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(396, 309);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
@@ -79,50 +80,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Inscribir alumno a materias";
             // 
-            // label1
+            // btnModificar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "ID de la materia";
-            // 
-            // txtIDalumno
-            // 
-            this.txtIDalumno.Location = new System.Drawing.Point(92, 35);
-            this.txtIDalumno.MaxLength = 3;
-            this.txtIDalumno.Name = "txtIDalumno";
-            this.txtIDalumno.Size = new System.Drawing.Size(89, 20);
-            this.txtIDalumno.TabIndex = 4;
-            // 
-            // txtIDmateria
-            // 
-            this.txtIDmateria.Location = new System.Drawing.Point(92, 66);
-            this.txtIDmateria.MaxLength = 2;
-            this.txtIDmateria.Name = "txtIDmateria";
-            this.txtIDmateria.Size = new System.Drawing.Size(89, 20);
-            this.txtIDmateria.TabIndex = 5;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Location = new System.Drawing.Point(0, 100);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
-            this.btnNuevo.TabIndex = 31;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(0, 129);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 32;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnModificar.Location = new System.Drawing.Point(162, 129);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 34;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnBorrar
             // 
@@ -134,31 +100,56 @@
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
-            // btnModificar
+            // btnAgregar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(162, 129);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 34;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnAgregar.Location = new System.Drawing.Point(0, 129);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 32;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnVerMaterias
+            // btnNuevo
             // 
-            this.btnVerMaterias.Location = new System.Drawing.Point(12, 189);
-            this.btnVerMaterias.Name = "btnVerMaterias";
-            this.btnVerMaterias.Size = new System.Drawing.Size(236, 23);
-            this.btnVerMaterias.TabIndex = 4;
-            this.btnVerMaterias.Text = "Ver materias del alumno";
-            this.btnVerMaterias.UseVisualStyleBackColor = true;
+            this.btnNuevo.Location = new System.Drawing.Point(0, 100);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.TabIndex = 31;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // txtIDmateria
+            // 
+            this.txtIDmateria.Location = new System.Drawing.Point(92, 66);
+            this.txtIDmateria.MaxLength = 2;
+            this.txtIDmateria.Name = "txtIDmateria";
+            this.txtIDmateria.Size = new System.Drawing.Size(89, 20);
+            this.txtIDmateria.TabIndex = 5;
+            // 
+            // txtIDalumno
+            // 
+            this.txtIDalumno.Location = new System.Drawing.Point(92, 35);
+            this.txtIDalumno.MaxLength = 3;
+            this.txtIDalumno.Name = "txtIDalumno";
+            this.txtIDalumno.Size = new System.Drawing.Size(89, 20);
+            this.txtIDalumno.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "ID de la materia";
             // 
             // VentanaInscribirAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 333);
-            this.Controls.Add(this.btnVerMaterias);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "VentanaInscribirAlumnos";
@@ -182,6 +173,5 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnVerMaterias;
     }
 }

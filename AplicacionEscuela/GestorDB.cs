@@ -292,7 +292,7 @@ namespace AplicacionEscuela
             using (conexionSQL)
             {
                 conexionSQL.Open();
-                using (MySqlCommand command = new MySqlCommand("SELECT * FROM alumnos_x_cursos WHERE alumno_id = '" + alu_id + "'"))
+                using (MySqlCommand command = new MySqlCommand("SELECT * FROM alumnos_x_cursos WHERE alumno_id = '" + alu_id + "'", conexionSQL))
                 {
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {

@@ -56,6 +56,7 @@ namespace AplicacionEscuela
                 {
                     p_idAlumno = int.Parse(txtIDalumno.Text); //convierto a int lo que este en el textbox. Si no funciona, tirará excepción
                     p_idMateria = int.Parse(txtIDmateria.Text); //idem
+                    alu.setID(p_idAlumno);
                     alu.agregarMateria(p_idMateria); //llamo al método de la clase para hacer un alta con esta instancia de la clase
                     MessageBox.Show("Registro añadido correctamente");
                     refrescarTabla();
@@ -96,14 +97,33 @@ namespace AplicacionEscuela
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                 txtIDalumno.Text = row.Cells[1].Value.ToString();
                 txtIDmateria.Text = row.Cells[2].Value.ToString();
-                int idAlumno = int.Parse(txtIDalumno.Text);
-                //reconstruirListaMaterias(idAlumno);
+                //int idAlumno = int.Parse(txtIDalumno.Text);
+                //alu.reconstruirListaMaterias(idAlumno);
             }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.SelectedRows.Count == 0) //si no se ha seleccionado una fila para editar, larga error
+            {
+                MessageBox.Show("Error: No se ha seleccionado un registro para modificar");
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Desea alterar este registro?", "Confirmar acción", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK)
+                {
+                    int indiceElegido = dataGridView1.SelectedRows[0].Index; //puntero que indica la fila seleccionada
+                    int IDfila = Convert.ToInt32(dataGridView1[0, indiceElegido].Value); //obtiene y convierte a int lo que esté en la fila del datagrid
+                    int p_idAlumno = int.Parse(txtIDalumno.Text); //convierto a int lo que este en el textbox
+                    int p_idMateria = int.Parse(txtIDmateria.Text); //idem
+                    alu.setID(p_idAlumno);
+                    alu.modificarMateria(p_idMateria, IDfila);
+                    MessageBox.Show("Registro modificado con éxito");
+                    refrescarTabla();
+                }
+            }
         }
+
     }
 }
