@@ -91,5 +91,11 @@ namespace AplicacionEscuela
             VentanaMateriasConsultas form = new VentanaMateriasConsultas();
             form.Show();
         }
+
+        private void alumnosEnMateriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VentanaInscribirAlumnos form = new VentanaInscribirAlumnos();
+            form.Show();
+        }
     }
 }

@@ -232,5 +232,83 @@ namespace AplicacionEscuela
             }
         }
 
+        public static bool InscribirAlumno(int alu_id, int cur_id)
+        {
+            try
+            {
+                MySqlCommand agregar = new MySqlCommand("INSERT INTO alumnos_x_cursos (alumno_id, curso_id) VALUES (@alumno_id, @curso_id)", conexionSQL);
+                agregar.Parameters.Add("@alumno_id", MySqlDbType.Int32).Value = alu_id;
+                agregar.Parameters.Add("@curso_id", MySqlDbType.Int32).Value = cur_id;
+                conexionSQL.Open(); //abre la conexion
+                agregar.ExecuteNonQuery(); //ejecuta el comando "agregar" en la base de datos
+                conexionSQL.Close(); //la cierra
+                return true;
+            }
+            catch (Exception c)
+            {
+                return false;
+            }
+        }
+
+        public static bool DarDeBajaAlumno(int id)
+        {
+            try
+            {
+                MySqlCommand borrar = new MySqlCommand("DELETE FROM alumnos_x_cursos WHERE id = @id", conexionSQL);
+                borrar.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                conexionSQL.Open(); //abre la conexion
+                borrar.ExecuteNonQuery(); //ejecuta el comando en la base de datos
+                conexionSQL.Close(); //la cierra
+                return true;
+            }
+            catch (Exception c)
+            {
+                return false;
+            }
+        }
+
+        public static bool ModificarInscripcionAlumno(int id_alu, int id_mat, int id)
+        {
+            try
+            {
+                MySqlCommand modificar = new MySqlCommand("UPDATE alumnos_x_cursos SET alumno_id = @alumno_id, curso_id = @curso_id WHERE id = @id", conexionSQL);
+                modificar.Parameters.Add("@alumno_id", MySqlDbType.Int32).Value = id_alu;
+                modificar.Parameters.Add("@curso_id", MySqlDbType.Int32).Value = id_mat;
+                modificar.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                conexionSQL.Open(); //abre la conexion
+                modificar.ExecuteNonQuery(); //ejecuta el comando "agregar" en la base de datos
+                conexionSQL.Close(); //la cierra
+                return true;
+            }
+            catch (Exception c)
+            {
+                return false;
+            }
+        }
+
+        public static List<int> getFromDataBase(int alu_id)
+        {
+            List<int> listaDatos = new List<int>();
+            using (conexionSQL)
+            {
+                conexionSQL.Open();
+                using (MySqlCommand command = new MySqlCommand("SELECT * FROM alumnos_x_cursos WHERE alumno_id = '" + alu_id + "'"))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                                listaDatos.Add(reader.GetInt32(2)); //el parametro "2" indica la columna de cursos. Así obtendrá los valores int (sin conversión)
+                        }
+                        reader.Close();
+                    }
+                }
+                conexionSQL.Close();
+            }
+            return listaDatos;
+        }
+
+
     }
 }

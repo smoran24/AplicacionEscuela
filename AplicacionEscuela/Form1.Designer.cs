@@ -117,6 +117,7 @@ namespace AplicacionEscuela
             this.alumnosEnMateriasToolStripMenuItem.Name = "alumnosEnMateriasToolStripMenuItem";
             this.alumnosEnMateriasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.alumnosEnMateriasToolStripMenuItem.Text = "Alumnos en Materias";
+            this.alumnosEnMateriasToolStripMenuItem.Click += new System.EventHandler(this.alumnosEnMateriasToolStripMenuItem_Click);
             // 
             // profesoresEnMateriasToolStripMenuItem
             // 
