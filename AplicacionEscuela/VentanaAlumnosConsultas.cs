@@ -13,7 +13,9 @@ namespace AplicacionEscuela
 {
     public partial class VentanaAlumnosConsultas : Form
     {
+        Alumno alu = new Alumno(); //creo el objeto para usarlo a lo largo de esta ventana
         
+
         public VentanaAlumnosConsultas()
         {
             InitializeComponent();
@@ -62,7 +64,12 @@ namespace AplicacionEscuela
                 {
                     p_legajo = int.Parse(txtLegajo.Text); //convierto a int lo que este en el textbox. Si no funciona, tirará excepción
                     p_dni = int.Parse(txtDNI.Text); //idem
-                    Alumno alu = new Alumno(p_turno, p_legajo, p_nombre, p_apellido, p_email, p_dni); //creo el objeto de la clase con los parametros dados
+                    alu.setTurno(p_turno);
+                    alu.setLegajo(p_legajo);
+                    alu.setNombre(p_nombre);
+                    alu.setApellido(p_apellido);
+                    alu.setEmail(p_email);
+                    alu.setDni(p_dni);
                     alu.Agregar(); //llamo al método de la clase para hacer un alta con esta instancia de la clase
                     MessageBox.Show("Registro añadido correctamente");
                     refrescarTabla();
@@ -87,7 +94,7 @@ namespace AplicacionEscuela
                 {
                     int indiceElegido = dgvAlumnos.SelectedRows[0].Index; //puntero que indica la fila seleccionada
                     int IDfila = Convert.ToInt32(dgvAlumnos[0, indiceElegido].Value); //obtiene y convierte a int lo que esté en la fila del datagrid
-                    Alumno alu = new Alumno(IDfila);
+                    alu.setID(IDfila);
                     alu.Borrar();
                     MessageBox.Show("Registro borrado con éxito");
                     refrescarTabla();
@@ -114,7 +121,13 @@ namespace AplicacionEscuela
                     string p_turno = cmbTurno.Text;
                     int p_legajo = int.Parse(txtLegajo.Text); //convierto a int lo que este en el textbox
                     int p_dni = int.Parse(txtDNI.Text); //idem
-                    Alumno alu = new Alumno(p_turno, IDfila, p_legajo, p_nombre, p_apellido, p_email, p_dni);
+                    alu.setNombre(p_nombre);
+                    alu.setApellido(p_apellido);
+                    alu.setEmail(p_email);
+                    alu.setTurno(p_turno);
+                    alu.setLegajo(p_legajo);
+                    alu.setDni(p_dni);
+                    alu.setID(IDfila);
                     alu.Modificar();
                     MessageBox.Show("Registro modificado con éxito");
                     refrescarTabla();
@@ -124,26 +137,7 @@ namespace AplicacionEscuela
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            /*
-            if (String.IsNullOrEmpty(txtDNI.Text))
-            {
-                MessageBox.Show("Error: Debe ingresar el DNI para realizar la búsqueda");
-            }
-            else
-            {
-                int p_dni;
-                try
-                {
-                    p_dni = int.Parse(txtDNI.Text); //convierto a int
-                    Alumno alu = new Alumno();
-                    alu.Buscar(dni);
-                    //de alguna forma mostrar lo que se buscó...
-
-                }catch(Exception c)
-                {
-                    MessageBox.Show("Error: Debe ingresar un valor numérico para DNI");
-                }
-            }*/
+            
         }
 
         private void dgvAlumnos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -176,6 +170,22 @@ namespace AplicacionEscuela
         private void txtDNI_TextChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            MySqlDataAdapter da = GestorDB.RefrescarDB(1); //1 indica que se refrescará la tabla de alumnos
+            DataSet ds = new DataSet();
+            da.Fill(ds, "alumnos");
+
+            DataView dv = ds.Tables["alumnos"].DefaultView;
+            dv.RowFilter = string.Format("convert(dni, 'System.String') Like '%{0}%' ", txtBusqueda.Text);
+            dgvAlumnos.DataSource = dv;
+        }
+
+        private void txtBusqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
         }
     }
 }

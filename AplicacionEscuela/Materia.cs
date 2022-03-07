@@ -20,24 +20,9 @@ namespace AplicacionEscuela
 
         }
 
-        public Materia(int id) //constructor usado cuando se necesite el método Borrar() para eliminar un registro solo por ID
+        public Materia(int id) //constructor usado cuando se necesite el método agregarMateria() en Alumno.cs
         {
             this.id = id;
-        }
-
-        //este constructor sobrecargado existe para cuando se quiera Agregar() un objeto de esta clase a un método SQL
-        public Materia(string nombre, string descripcion)
-        {
-            this.nombre = nombre;
-            this.descripcion = descripcion;
-        }
-
-        //mismo principio, pero este se utiliza en el método Modificar(), donde se necesita conocer el ID tambien
-        public Materia(int id, string nombre, string descripcion)
-        {
-            this.id = id;
-            this.nombre = nombre;
-            this.descripcion = descripcion;
         }
 
         public int getId()
@@ -67,6 +52,7 @@ namespace AplicacionEscuela
             this.descripcion = p_descripcion;
         }
 
+        /* //METODOS NO IMPLEMENTADOS (el primero porque ya está implementado por Alumno y el otro porque no lo está)
         public void agregarAlumno(int legajo, string nombre, string apellido, string email, int dni, string turno)
         {
             Alumno alu = new Alumno(turno, legajo, nombre, apellido, email, dni); //crea un nuevo objeto con los parámetros recibidos
@@ -78,6 +64,7 @@ namespace AplicacionEscuela
             Profesor pro = new Profesor(anioIncorp, legajo, nombre, apellido, email, dni); //crea un nuevo objeto con los parámetros recibidos
             profes.Add(pro); //añade el elemento a la lista
         }
+        */
 
         public void Agregar()
         {
@@ -92,11 +79,6 @@ namespace AplicacionEscuela
         public void Modificar()
         {
             GestorDB.ActualizarMateria(this.nombre, this.descripcion, this.id);
-        }
-
-        public void Buscar(int id)
-        {
-            
         }
     }
 }

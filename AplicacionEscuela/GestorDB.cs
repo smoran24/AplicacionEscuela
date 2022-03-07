@@ -39,23 +39,6 @@ namespace AplicacionEscuela
             return da; //retorna el adaptador de datos para usarlo en el datagrid (capa de transacciones)
         }
 
-        public static bool BuscarAlumnoPorDNI(int dni)
-        {
-            try
-            {
-                MySqlCommand buscar = new MySqlCommand("SELECT * FROM alumnos WHERE dni = @dni", conexionSQL);
-                buscar.Parameters.Add("@dni", MySqlDbType.Int32).Value = dni;
-                conexionSQL.Open(); //abre la conexion
-                buscar.ExecuteNonQuery(); //ejecuta el comando en la base de datos
-                conexionSQL.Close(); //la cierra
-                return true;
-            }
-            catch (Exception c)
-            {
-                return false;
-            }
-        }
-
         public static bool InsertarAlumno(string nom, string ape, string ema, int dni, string tur, int leg)
         {
             try
@@ -308,7 +291,5 @@ namespace AplicacionEscuela
             }
             return listaDatos;
         }
-
-
     }
 }

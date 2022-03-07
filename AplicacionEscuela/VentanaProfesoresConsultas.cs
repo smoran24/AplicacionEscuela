@@ -13,6 +13,8 @@ namespace AplicacionEscuela
 {
     public partial class VentanaProfesoresConsultas : Form
     {
+        Profesor prof = new Profesor(); //creo el objeto para usarlo a lo largo de esta ventana
+
         public VentanaProfesoresConsultas()
         {
             InitializeComponent();
@@ -57,8 +59,13 @@ namespace AplicacionEscuela
                     p_legajo = int.Parse(txtLegajo.Text); //convierto a int lo que este en el textbox
                     p_dni = int.Parse(txtDNI.Text); //idem
                     p_anio = int.Parse(cmbAnio.Text);
-                    Profesor pro = new Profesor(p_anio, p_legajo, p_nombre, p_apellido, p_email, p_dni); //creo el objeto de la clase con los parametros dados
-                    pro.Agregar(); //llamo al método de la clase para hacer un alta con esta instancia de la clase
+                    prof.setAnioIncorporacion(p_anio);
+                    prof.setLegajo(p_legajo);
+                    prof.setNombre(p_nombre);
+                    prof.setApellido(p_apellido);
+                    prof.setEmail(p_email);
+                    prof.setDni(p_dni);
+                    prof.Agregar(); //llamo al método de la clase para hacer un alta con esta instancia de la clase
                     MessageBox.Show("Registro añadido correctamente");
                     refrescarTabla();
                     btnAgregar.Enabled = false;
@@ -83,8 +90,8 @@ namespace AplicacionEscuela
                 {
                     int indiceElegido = dgvProfesores.SelectedRows[0].Index; //puntero que indica la fila seleccionada
                     int IDfila = Convert.ToInt32(dgvProfesores[0, indiceElegido].Value); //obtiene y convierte a int lo que esté en la fila del datagrid
-                    Profesor pro = new Profesor(IDfila);
-                    pro.Borrar();
+                    prof.setID(IDfila);
+                    prof.Borrar();
                     MessageBox.Show("Registro borrado con éxito");
                     refrescarTabla();
                 }
@@ -110,8 +117,14 @@ namespace AplicacionEscuela
                     int p_legajo = int.Parse(txtLegajo.Text); //convierto a int lo que este en el textbox
                     int p_dni = int.Parse(txtDNI.Text); //idem
                     int p_anio = int.Parse(cmbAnio.Text);
-                    Profesor pro = new Profesor(p_anio, IDfila, p_legajo, p_nombre, p_apellido, p_email, p_dni);
-                    pro.Modificar();
+                    prof.setNombre(p_nombre);
+                    prof.setApellido(p_apellido);
+                    prof.setEmail(p_email);
+                    prof.setAnioIncorporacion(p_anio);
+                    prof.setLegajo(p_legajo);
+                    prof.setDni(p_dni);
+                    prof.setID(IDfila);
+                    prof.Modificar();
                     MessageBox.Show("Registro modificado con éxito");
                     refrescarTabla();
                 }
@@ -143,6 +156,17 @@ namespace AplicacionEscuela
             cmbAnio.Text = "";
             txtLegajo.Text = "";
             btnAgregar.Enabled = true;
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            MySqlDataAdapter da = GestorDB.RefrescarDB(2); //2 indica que se refrescará la tabla de profes
+            DataSet ds = new DataSet();
+            da.Fill(ds, "profesores");
+
+            DataView dv = ds.Tables["profesores"].DefaultView;
+            dv.RowFilter = string.Format("convert(dni, 'System.String') Like '%{0}%' ", txtBusqueda.Text);
+            dgvProfesores.DataSource = dv;
         }
     }
 }

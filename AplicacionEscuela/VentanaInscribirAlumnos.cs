@@ -97,8 +97,8 @@ namespace AplicacionEscuela
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                 txtIDalumno.Text = row.Cells[1].Value.ToString();
                 txtIDmateria.Text = row.Cells[2].Value.ToString();
-                //int idAlumno = int.Parse(txtIDalumno.Text);
-                //alu.reconstruirListaMaterias(idAlumno);
+                int idAlumno = int.Parse(txtIDalumno.Text);
+                alu.reconstruirListaMaterias(idAlumno);
             }
         }
 
@@ -125,5 +125,9 @@ namespace AplicacionEscuela
             }
         }
 
+        private void btnMostrarMaterias_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -79,7 +79,6 @@
     </Compile>
     <Compile Include="ITransacciones.cs" />
     <Compile Include="Materia.cs" />
-    <Compile Include="Nota.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Profesor.cs" />
     <Compile Include="Program.cs" />

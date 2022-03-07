@@ -13,6 +13,8 @@ namespace AplicacionEscuela
 {
     public partial class VentanaMateriasConsultas : Form
     {
+        Materia mat = new Materia(); //creo el objeto para usarlo a lo largo de esta ventana
+
         public VentanaMateriasConsultas()
         {
             InitializeComponent();
@@ -34,11 +36,12 @@ namespace AplicacionEscuela
             {
                 MessageBox.Show("Error: Debe completar todos los campos para añadir un elemento");
             }
-            else
+            else //no necesita del try catch porque en los textbox siempre ingresarán string
             {
                 string p_nombre = txtNombre.Text;
                 string p_desc = txtDescripcion.Text;
-                Materia mat = new Materia(p_nombre, p_desc); //creo el objeto de la clase con los parametros dados
+                mat.setDescripcion(p_desc);
+                mat.setNombre(p_nombre);
                 mat.Agregar(); //llamo al método de la clase para hacer un alta con esta instancia de la clase
                 MessageBox.Show("Registro añadido correctamente");
                 refrescarTabla();
@@ -59,7 +62,7 @@ namespace AplicacionEscuela
                 {
                     int indiceElegido = dgvMaterias.SelectedRows[0].Index; //puntero que indica la fila seleccionada
                     int IDfila = Convert.ToInt32(dgvMaterias[0, indiceElegido].Value); //obtiene y convierte a int lo que esté en la fila del datagrid
-                    Materia mat = new Materia(IDfila);
+                    mat.setId(IDfila);
                     mat.Borrar();
                     MessageBox.Show("Registro borrado con éxito");
                     refrescarTabla();
@@ -82,7 +85,9 @@ namespace AplicacionEscuela
                     int IDfila = Convert.ToInt32(dgvMaterias[0, indiceElegido].Value); //obtiene y convierte a int lo que esté en la fila del datagrid
                     string p_nombre = txtNombre.Text;
                     string p_desc = txtDescripcion.Text;
-                    Materia mat = new Materia(IDfila, p_nombre, p_desc);
+                    mat.setDescripcion(p_desc);
+                    mat.setNombre(p_nombre);
+                    mat.setId(IDfila);
                     mat.Modificar();
                     MessageBox.Show("Registro modificado con éxito");
                     refrescarTabla();

@@ -39,7 +39,6 @@ namespace AplicacionEscuela
             this.consultasToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.notasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosEnMateriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profesoresEnMateriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -99,15 +98,14 @@ namespace AplicacionEscuela
             // consultasToolStripMenuItem2
             // 
             this.consultasToolStripMenuItem2.Name = "consultasToolStripMenuItem2";
-            this.consultasToolStripMenuItem2.Size = new System.Drawing.Size(126, 22);
+            this.consultasToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.consultasToolStripMenuItem2.Text = "Consultas";
             this.consultasToolStripMenuItem2.Click += new System.EventHandler(this.consultasToolStripMenuItem2_Click);
             // 
             // notasToolStripMenuItem
             // 
             this.notasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alumnosEnMateriasToolStripMenuItem,
-            this.profesoresEnMateriasToolStripMenuItem});
+            this.alumnosEnMateriasToolStripMenuItem});
             this.notasToolStripMenuItem.Name = "notasToolStripMenuItem";
             this.notasToolStripMenuItem.Size = new System.Drawing.Size(141, 20);
             this.notasToolStripMenuItem.Text = "Operaciones especiales";
@@ -115,15 +113,9 @@ namespace AplicacionEscuela
             // alumnosEnMateriasToolStripMenuItem
             // 
             this.alumnosEnMateriasToolStripMenuItem.Name = "alumnosEnMateriasToolStripMenuItem";
-            this.alumnosEnMateriasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.alumnosEnMateriasToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.alumnosEnMateriasToolStripMenuItem.Text = "Alumnos en Materias";
             this.alumnosEnMateriasToolStripMenuItem.Click += new System.EventHandler(this.alumnosEnMateriasToolStripMenuItem_Click);
-            // 
-            // profesoresEnMateriasToolStripMenuItem
-            // 
-            this.profesoresEnMateriasToolStripMenuItem.Name = "profesoresEnMateriasToolStripMenuItem";
-            this.profesoresEnMateriasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.profesoresEnMateriasToolStripMenuItem.Text = "Profesores en Materias";
             // 
             // pictureBox1
             // 
@@ -167,7 +159,6 @@ namespace AplicacionEscuela
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem alumnosEnMateriasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem profesoresEnMateriasToolStripMenuItem;
     }
 }
 

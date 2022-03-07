@@ -18,34 +18,6 @@ namespace AplicacionEscuela
             
         }
 
-        public Alumno(int id) //constructor usado cuando se necesite el método Borrar() para eliminar un registro solo por ID
-        {
-            this.id = id;
-        }
-
-        //este constructor sobrecargado existe para cuando se quiera Agregar() un objeto de esta clase a un método SQL
-        public Alumno(string turno, int legajo, string nombre, string apellido, string email, int dni) : base(legajo, nombre, apellido, email, dni)
-        {
-            this.turno = turno;
-            this.legajo = legajo;
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.email = email;
-            this.dni = dni;
-        }
-
-        //mismo principio, pero este se utiliza en el método Modificar(), donde se necesita conocer el ID tambien
-        public Alumno(string turno, int id, int legajo, string nombre, string apellido, string email, int dni) : base(legajo, nombre, apellido, email, dni)
-        {
-            this.turno = turno;
-            this.id = id;
-            this.legajo = legajo;
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.email = email;
-            this.dni = dni;
-        }
-
         public string getTurno()
         {
             return this.turno;
@@ -85,57 +57,49 @@ namespace AplicacionEscuela
               }
            }
            */
-
-            for (int i = 0; i < materias.Count; i++)
+           if(GestorDB.DarDeBajaAlumno(idFila) == true) //verifica si se pudo eliminar la materia en la base de datos
             {
-                if (materias[i].getId() == idMateria) //si la id de la materia M concuerda con el id de materia provisto...
+                for (int i = 0; i < materias.Count; i++) //recorre la lista de materias
                 {
-                    materias.Remove(materias[i]); //se quita la materia M de la lista de materias
+                    if (materias[i].getId() == idMateria) //si la id de la materia M concuerda con el id de materia provisto...
+                    {
+                        materias.Remove(materias[i]); //se quita la materia M de la lista de materias
+                    }
                 }
             }
-
-            GestorDB.DarDeBajaAlumno(idFila);
         }
 
         public void modificarMateria(int idMateria, int idFila)
         {
-            for (int i = 0; i < materias.Count; i++)
+            if(GestorDB.ModificarInscripcionAlumno(this.id, idMateria, idFila) == true)
             {
-                if (i == idFila)
+                for (int i = 0; i < materias.Count; i++) //recorre la lista de materias
                 {
-                    materias[i].setId(idMateria);
-                }
-            }
-            GestorDB.ModificarInscripcionAlumno(this.id, idMateria, idFila);
-        }
-
-        public void reconstruirListaMaterias(int idAlumno) //ERROR: SE PRODUCE UN BUCLE INFINITO
-        {
-            List <int> numMaterias = GestorDB.getFromDataBase(idAlumno); //recibe la List de valores INT (indices de materias)
-            /*
-            foreach (Materia m in materias) 
-            {
-                foreach (int idMateria in numMaterias)
-                {
-                    if (m.getId() != idMateria) //si el id de la materia m actual no coincide con uno de la lista de ids...
+                    if (materias[i].getId() == idMateria) //si la id de la materia M concuerda con el id de materia provisto...
                     {
-                        Materia mat = new Materia(idMateria); //lo añade a la lista de materias
-                        materias.Add(mat);
+                        materias.Remove(materias[i]); //se quita la materia M de la lista de materias
                     }
                 }
-            }*/
-            for (int i = 0; i < materias.Count; i++)
+                Materia mat = new Materia(idMateria); //crea un nuevo objeto tipo materia con los parametros recibidos
+                materias.Add(mat); //añade la materia "mat" a la List "materias".
+            }
+        }
+
+        public void reconstruirListaMaterias(int idAlumno) //puede que no esté funcionando...
+        {
+            List <int> numMaterias = GestorDB.getFromDataBase(idAlumno); //recibe la List de valores int (indices de materias)
+
+            int cantMaterias = materias.Count;
+            materias.Clear(); //limpio la lista de materias para luego re-rellenarla
+
+            for (int i = 0; i < cantMaterias; i++) //bucles para añadir las materias de la lista de IDs de la base de datos a la lista de materias
             {
                 for (int j = 0; j < numMaterias.Count; j++)
                 {
-                    if (materias[i].getId() != j) //si el id de la materia m actual no coincide con uno de la lista de ids...
-                    {
-                        Materia mat = new Materia(j); //lo añade a la lista de materias
-                        materias.Add(mat);
-                    }
+                    Materia mat = new Materia(numMaterias[j]); //lo añade a la lista de materias
+                    materias.Add(mat);
                 }
             }
-
         }
 
         public void Agregar()
@@ -151,11 +115,6 @@ namespace AplicacionEscuela
         public void Modificar()
         {
             GestorDB.ActualizarAlumno(this.nombre, this.apellido, this.email, this.dni, this.turno, this.legajo, this.id);
-        }
-
-        public void Buscar(int dni)
-        {
-            GestorDB.BuscarAlumnoPorDNI(dni);
         }
     }
 }

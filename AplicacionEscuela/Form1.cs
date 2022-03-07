@@ -37,47 +37,13 @@ namespace AplicacionEscuela
 
         private void conectarseASQLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*
-            cadenaConexion = new MySqlConnection("Server=localhost; Database=sebastian; Uid=root; Pwd=013042; SslMode = none"); //uso el argumento "sslmode = none" para desactivar el uso de SSL (solucion al problema de la conexion)
-
-            try
-            {
-                if(cadenaConexion != null && cadenaConexion.State == ConnectionState.Closed)
-                {
-                    cadenaConexion.Open();
-                    MessageBox.Show("Conectado a la base de datos!");
-                    
-                }
-                
-            }catch(Exception c)
-            {
-                MessageBox.Show("No se pudo establecer la conexión con la base de datos.");
-            }
-            */
+            
         }
 
 
         private void desconectarseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*
-
-            if (cadenaConexion != null && cadenaConexion.State == ConnectionState.Open)
-            {
-                cadenaConexion.Close();
-                MessageBox.Show("Se ha desconectado de la base de datos.");
-            }
-
-            //PRUEBO SI FUNCIONA LA HERENCIA DE ATRIBUTOS DE PERSONA.CS
-            Profesor prof1 = new Profesor();
-            prof1.setApellido("moran");
-            string ape=prof1.getApellido();
-            MessageBox.Show("hola, " + ape);
             
-
-            //PRUEBO SI FUNCIONA LA HERENCIA DE METODOS DE INTERFAZ ITRANSACCIONES.CS
-            Alumno alu = new Alumno();
-            alu.Agregar();
-          */
         }
 
         private void consultasToolStripMenuItem1_Click(object sender, EventArgs e)

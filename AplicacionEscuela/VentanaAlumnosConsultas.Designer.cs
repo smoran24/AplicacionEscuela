@@ -45,8 +45,9 @@ namespace AplicacionEscuela
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -195,16 +196,6 @@ namespace AplicacionEscuela
             this.label6.TabIndex = 28;
             this.label6.Text = "Turno";
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(679, 295);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(195, 23);
-            this.btnBuscar.TabIndex = 29;
-            this.btnBuscar.Text = "Buscar por DNI";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // btnNuevo
             // 
             this.btnNuevo.Location = new System.Drawing.Point(15, 261);
@@ -215,13 +206,33 @@ namespace AplicacionEscuela
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(763, 297);
+            this.txtBusqueda.MaxLength = 8;
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(111, 20);
+            this.txtBusqueda.TabIndex = 31;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(640, 301);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(117, 13);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Buscar alumno por DNI";
+            // 
             // VentanaAlumnosConsultas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 330);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -264,7 +275,8 @@ namespace AplicacionEscuela
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.Label label7;
     }
 }

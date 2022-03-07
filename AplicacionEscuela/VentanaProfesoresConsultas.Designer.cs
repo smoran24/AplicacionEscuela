@@ -45,6 +45,8 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.cmbAnio = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfesores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,11 +225,31 @@
             this.cmbAnio.Size = new System.Drawing.Size(65, 21);
             this.cmbAnio.TabIndex = 39;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(636, 303);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 13);
+            this.label7.TabIndex = 40;
+            this.label7.Text = "Buscar profesor por DNI";
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(763, 300);
+            this.txtBusqueda.MaxLength = 8;
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(111, 20);
+            this.txtBusqueda.TabIndex = 41;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
             // VentanaProfesoresConsultas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 330);
+            this.Controls.Add(this.txtBusqueda);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cmbAnio);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnModificar);
@@ -273,5 +295,7 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.ComboBox cmbAnio;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBusqueda;
     }
 }

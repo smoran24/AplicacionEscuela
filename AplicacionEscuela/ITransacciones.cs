@@ -13,7 +13,5 @@ namespace AplicacionEscuela
         void Borrar();
 
         void Modificar();
-
-        void Buscar(int num); //este sí o sí tiene que recibir parámetro para hacer su trabajo
     }
 }
